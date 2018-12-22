@@ -30,13 +30,10 @@ workflows:
   commit:
     jobs:
       - wf_first_job
-          # filters:
-          #   only:
-          #     - master
       - wf_second_job
-          # filters:
-          #   only:
-          #     - master
+          filters:
+            only:
+              - master
   #     - packer_build
   #         requires:
   #           - packer_validate
