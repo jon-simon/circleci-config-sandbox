@@ -31,9 +31,9 @@ workflows:
     jobs:
       - wf_first_job
       - wf_second_job
-          filters:
-            only:
-              - master
+        filters:
+          only:
+            - master
   #     - packer_build
   #         requires:
   #           - packer_validate
