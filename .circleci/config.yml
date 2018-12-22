@@ -1,0 +1,52 @@
+defaults: &defaults
+  docker:
+    - image: 552172703831.dkr.ecr.us-west-2.amazonaws.com/infra-tools:latest
+  working_directory: ~/app
+  environment:
+    - AWS_REGION: us-west-2
+    - AWS_PREFIX: jibakurei
+    - AMI_NAME: amzn2-base
+
+version: 2
+jobs:
+  wf_first_job:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: 1st Job Run
+          command: echo "Success" > firstJob.txt
+      - persist_to_workspace:
+          root: circleci-sandbox
+          paths:
+            - .
+
+  wf_second_job:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /root/app/packer-project
+      - run:
+          name: Packer Build
+          command: ls -la /root/app/circleci-sandbox
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - wf_first_job
+          # filters:
+          #   only:
+          #     - master
+      - wf_second_job
+          # filters:
+          #   only:
+          #     - master
+  #     - packer_build
+  #         requires:
+  #           - packer_validate
+
+
+
+
+
