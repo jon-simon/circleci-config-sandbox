@@ -17,9 +17,9 @@ jobs:
           name: 1st Job Run
           command: echo "Success" > firstJob.txt
       - persist_to_workspace:
-          root: circleci-sandbox
+          root: .
           paths:
-            - .
+            - circleci-sandbox
 
   wf_second_job:
     <<: *defaults
