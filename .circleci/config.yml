@@ -25,7 +25,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: /root/app/packer-project
+          at: /root/app/circleci-sandbox
       - run:
           name: Packer Build
           command: ls -la /root/app/circleci-sandbox
