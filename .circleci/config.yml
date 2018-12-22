@@ -23,7 +23,7 @@ jobs:
       - checkout
       - run:
           name: Packer Build
-          command: ls -la /root/app/circleci-sandbox
+          command: ls -la /root/app
 
 workflows:
   version: 2
