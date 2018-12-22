@@ -29,15 +29,26 @@ workflows:
   version: 2
   commit:
     jobs:
+      - build
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
+workflows:
+  version: 2
+  commit:
+    jobs:
       - wf_first_job
-      - wf_second_job
+      - wf_second_job:
           filters:
             branches:
               only:
                 - master
-  #     - packer_build
-  #         requires:
-  #           - packer_validate
+
+
 
 
 
