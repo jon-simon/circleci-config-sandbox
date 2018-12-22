@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: 552172703831.dkr.ecr.us-west-2.amazonaws.com/infra-tools:latest
+    - image: centos:latest
   working_directory: ~/app
   environment:
     - AWS_REGION: us-west-2
