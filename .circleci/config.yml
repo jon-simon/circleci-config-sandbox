@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: centos:latest
+    - image: 552172703831.dkr.ecr.us-west-2.amazonaws.com/infra-tools:latest
   working_directory: ~/app
   environment:
     - AWS_REGION: us-west-2
@@ -14,16 +14,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: 1st Job Run
-          command: echo "Success" > firstJob.txt
+          name: Checking Chef
+          command: |
+            which chef
+            chef --version
+
 
   wf_second_job:
     <<: *defaults
     steps:
       - checkout
       - run:
-          name: Packer Build
-          command: ls -la /root/app
+          name: Dummy Job
+          command: echo "This is the second job of the workflow"
 
 workflows:
   version: 2
