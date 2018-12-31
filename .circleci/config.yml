@@ -18,6 +18,9 @@ jobs:
           command: |
             which chef
             chef --version
+            echo ''
+            which ruby
+            ruby --version
 
 
   wf_second_job:
