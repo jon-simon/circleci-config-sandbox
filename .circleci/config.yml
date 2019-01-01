@@ -16,13 +16,11 @@ jobs:
       - run:
           name: Checking Chef
           command: |
-            PATH="/opt/chefdk/embedded/bin:${PATH}"
             which chef
             chef --version
             echo ''
             which ruby
             ruby --version
-
 
   wf_second_job:
     <<: *defaults
